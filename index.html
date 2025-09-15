@@ -1,0 +1,359 @@
+<!--
+RESEARCH PROJECT WEBSITE TEMPLATE
+
+This is a template for creating research project websites. To customize:
+
+1. TITLE & HEADER:
+   - Update the <title> tag
+   - Replace "Your Project Title" and "Your Project Subtitle" in the hero section
+
+2. ABSTRACT:
+   - Replace the placeholder text in the abstract section with your project description
+
+3. METHODS:
+   - Update the methods image: assets/images/[YOUR_METHODS_DIAGRAM.png]
+   - Replace "Your Method Name" and the description text
+
+4. VIDEO GALLERIES:
+   - Replace all video sources with your own videos
+   - Update the section titles and captions to match your content
+   - Videos should be placed in assets/videos/ directory
+
+5. EXPERIMENTS/ABLATIONS:
+   - Update section titles from generic names to your specific experiment names
+   - Replace video sources and descriptions
+
+6. FOOTER:
+   - Update with your name/institution and year
+
+7. ASSETS:
+   - Replace assets/videos/teaser_ball_3x.mp4 with your hero video
+   - Replace assets/images/method.gif with your methods diagram
+   - Add your videos to assets/videos/ directory
+
+The template is structured for research papers but can be adapted for any project.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Project Template</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- ‑‑‑‑‑‑  STYLE SHEETS  ‑‑‑‑‑‑  -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <!-- ============================================================ -->
+  <!--  MAIN CONTENT (now displayed by default)                     -->
+  <!-- ============================================================ -->
+  <div id="content" style="display:block;">
+    <!-- HERO -->
+    <header class="full-page-image" id="hero">
+      <video id="bg-video" preload="metadata" autoplay muted playsinline loop>
+        <!-- <source src="assets/videos/teaser_ball_3x.mp4" type="video/mp4" /> -->
+        <source src="[YOUR_VIDEO_FILE.mp4]" type="video/mp4" />
+      </video>
+      <div class="overlay"></div>
+      <div class="bottom-overlay" style="padding:0 24px;">
+        <h1>Your Project Title<br/><span style="font-size: 0.7em; font-weight: 300;">Your Project Subtitle</span></h1>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" onclick="scrollToContent()">
+        ↓
+      </div>
+    </header>
+    
+    <!-- MAIN CONTENT BODY -->
+    <main class="main-content">
+      <!-- <div class="hero-text">Versatile Loco-Manipulation through Flexible Interlimb Coordination</div> -->
+
+      <div class="sub-hero-text">Your Project Subtitle</div>
+
+      <!-- <div class="authors">CoRL 2025 Submission 925<br/></div> -->
+
+      <!-- <div class="quick-links"><a href="paper.pdf" target="_blank">[pdf]</a><a href="#" onclick="return false;">[arXiv (after review)]</a><a href="#" onclick="return false;">[code (after review)]</a></div> -->
+
+      <div class="tagline" id="abstract">Abstract</div>
+      <div class="section">
+        <p>
+          [Replace this placeholder text with your project abstract. Describe your research problem, approach, key contributions, and results.]
+          This template is designed for research project websites. Include information about your methodology, experimental setup,
+          key findings, and impact. Make sure to highlight what makes your work novel and important.
+        </p>
+      </div>
+
+      <div class="tagline" id="video-gallery-title">Key Results</div>
+
+      <!-- Video Gallery Section - mobile interlimb coordination -->
+      <div class="video-gallery-section" id="gallery-section-mobileinterlimb">
+        <div class="video-gallery-container">
+          <div class="video-gallery" id="mobileinterlimb">
+            <!-- REPLACE WITH YOUR VIDEOS -->
+            <!-- <video class="gallery-video" src="assets/videos/yogaball.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/shippingbox.mp4" autoplay muted playsinline loop></video> -->
+            <!-- Add your video files here: -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_1.mp4]" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_2.mp4]" autoplay muted playsinline loop></video> -->
+          </div>
+        </div>
+        <!-- Container for the caption AND buttons -->
+        <div class="gallery-caption-container">
+            <!-- Move button controls INSIDE caption container -->
+            <!-- <div class="gallery-nav-controls">
+                <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
+                <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
+            </div> -->
+            <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Result 1:</b> [Replace with description of your first key result or demonstration]
+            </p>
+        </div>
+      </div>
+    <!-- End Video Gallery Section -->
+    <!-- Video Gallery Section - Stationary interlimb coordination -->
+    <div class="video-gallery-section" id="gallery-section-stationaryinterlimb">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="videoGalleryStationaryInterlimbRow1">
+          <!-- REPLACE WITH YOUR VIDEOS -->
+          <!-- <video class="gallery-video" src="assets/videos/tirepump.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/trashbin.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_3.mp4]" autoplay muted playsinline loop></video> -->
+        </div>
+        <div class="video-gallery" id="videoGalleryStationaryInterlimbRow2">
+          <!-- <video class="gallery-video" src="assets/videos/deckbox.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/smallbin.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_4.mp4]" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_5.mp4]" autoplay muted playsinline loop></video> -->
+        </div>
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+          <!-- Move button controls INSIDE caption container -->
+          <!-- <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnStationaryInterlimb">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnStationaryInterlimb">&gt;</button>
+          </div> -->
+          <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Result 2:</b> [Replace with description of your second key result or demonstration]
+            </p>
+      </div>
+    </div>
+    <!-- End Video Gallery Section -->
+
+    <!-- Video Gallery Section - Foot-assisted manipulation -->
+      <div class="video-gallery-section" id="gallery-section-footassistedmanipulation">
+        <div class="video-gallery-container">
+          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow1">
+            <!-- REPLACE WITH YOUR VIDEOS -->
+            <!-- <video class="gallery-video" src="assets/videos/toolchest.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/storagebin.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_6.mp4]" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_7.mp4]" autoplay muted playsinline loop></video> -->
+          </div>
+          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow2">
+            <!-- <video class="gallery-video" src="assets/videos/chair.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/basket.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_8.mp4]" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_9.mp4]" autoplay muted playsinline loop></video> -->
+          </div>
+          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow3">
+            <!-- <video class="gallery-video" src="assets/videos/drawer.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/laundrybag.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_10.mp4]" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_11.mp4]" autoplay muted playsinline loop></video> -->
+          </div>
+        </div>
+        <!-- Container for the caption AND buttons -->
+        <div class="gallery-caption-container">
+            <!-- Move button controls INSIDE caption container -->
+            <!-- <div class="gallery-nav-controls">
+                <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
+                <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
+            </div> -->
+            <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Result 3:</b> [Replace with description of your third key result or demonstration]
+            </p>
+        </div>
+      </div>
+
+    <div class="tagline" id="methods">Methods</div>
+    <div class="section">
+      <img src="assets/images/[YOUR_METHODS_DIAGRAM.png]" alt="Methods overview diagram" style="width: 100%; margin: 20px 0 10px 0;" loading="eager" decoding="async">
+      <p class="figure-caption">
+        <b>Your Method Name:</b> [Replace this with a description of your methodology/approach]
+        Describe your technical approach, key innovations, and how your method solves the problem.
+        Include information about your algorithm, model architecture, training procedure, or experimental setup.
+      </p>
+    </div>
+    
+    <!-- Start of Ablations/Experiments -->
+    <div class="tagline" id="ablations">Experiments</div>
+      <!-- Multi-limb Co-Tracking -->
+      <div class="video-gallery-section" id="gallery-section-multi_limb_co_tracking">
+        <div class="video-gallery-container single-video">
+          <div class="video-gallery" id="multi_limb_co_tracking">
+            <!-- Videos remain here - ADD autoplay -->
+            <!-- <video class="gallery-video" src="assets/videos/ablations/multilimbtracking.mp4" autoplay muted playsinline loop></video> -->
+            <video class="gallery-video" src="assets/videos/[YOUR_EXPERIMENT_1_VIDEO.mp4]" autoplay muted playsinline loop></video>
+            <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+          </div>
+        </div>
+        <!-- Container for the caption AND buttons -->
+        <div class="gallery-caption-container">
+            <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Experiment 1:</b> [Replace with description of your first experimental result or ablation study]
+            </p>
+        </div>
+      </div>
+      <!-- Gait Transition -->
+      <div class="video-gallery-section" id="gallery-section-gait_transition">
+        <div class="video-gallery-container single-video">
+          <div class="video-gallery" id="gait_transition">
+            <!-- Videos remain here - ADD autoplay -->
+            <!-- <video class="gallery-video" src="assets/videos/ablations/gaittransition.mp4" autoplay muted playsinline loop></video> -->
+            <video class="gallery-video" src="assets/videos/[YOUR_EXPERIMENT_2_VIDEO.mp4]" autoplay muted playsinline loop></video>
+          </div>
+        </div>
+        <!-- Container for the caption AND buttons -->
+        <div class="gallery-caption-container">
+            <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Experiment 2:</b> [Replace with description of your second experimental result or ablation study]
+            </p>
+        </div>
+      </div>
+      <!-- Stability -->
+      <div class="video-gallery-section" id="gallery-section-stability">
+        <div class="video-gallery-container">
+          <div class="video-gallery" id="stability">
+            <!-- REPLACE WITH YOUR VIDEOS -->
+            <!-- <video class="gallery-video" src="assets/videos/ablations/10minstanding.mp4" autoplay muted playsinline loop></video> -->
+            <!-- <video class="gallery-video" src="assets/videos/ablations/externaldisturbance.mp4" autoplay muted playsinline loop></video> -->
+            <video class="gallery-video" src="assets/videos/[YOUR_EXPERIMENT_3_VIDEO_1.mp4]" autoplay muted playsinline loop></video>
+            <video class="gallery-video" src="assets/videos/[YOUR_EXPERIMENT_3_VIDEO_2.mp4]" autoplay muted playsinline loop></video>
+          </div>
+        </div>
+        <!-- Container for the caption AND buttons -->
+        <div class="gallery-caption-container">
+            <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+                <b>Experiment 3:</b> [Replace with description of your third experimental result or ablation study]
+            </p>
+        </div>
+      </div>
+    <!-- End of Ablations -->
+    <!-- Start of Limitations/Discussion -->
+    <div class="tagline" id="limitations">Limitations</div>
+    <div class="video-gallery-section" id="gallery-section-failures">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="failures">
+          <!-- REPLACE WITH YOUR LIMITATIONS/FAILURE CASE VIDEOS -->
+          <!-- <video class="gallery-video" src="assets/videos/failure_cases/slaminaccuracy_1.mp4" autoplay muted playsinline loop></video> -->
+          <!-- ... other failure videos commented out ... -->
+          <!-- <video class="gallery-video" src="assets/videos/[YOUR_LIMITATIONS_VIDEO_1.mp4]" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/[YOUR_LIMITATIONS_VIDEO_2.mp4]" autoplay muted playsinline loop></video> -->
+          <!-- Add your limitation/failure case videos here -->
+        </div>
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+        <!-- Move button controls INSIDE caption container -->
+        <div class="gallery-nav-controls">
+            <button class="gallery-nav left" id="scrollLeftBtnFailures">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnFailures">&gt;</button>
+        </div>
+        <!-- Caption text -->
+            <p class="figure-caption gallery-caption">
+            <b>Limitations:</b> [Replace with discussion of your method's limitations, failure cases, or areas for future work]
+        </p>
+      </div>
+    </div>
+    <!-- End of Failures -->
+
+    <div class="tagline" id="additional-results">Additional Results</div>
+
+    <!-- Video Gallery Section - mobile interlimb coordination -->
+    <div class="video-gallery-section" id="gallery-section-contactpoints">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="contactPointsRow1">
+          <!-- REPLACE WITH YOUR VIDEOS -->
+          <!-- <video class="gallery-video" src="assets/videos/yogaball_contact.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/toolchest_contact.mp4" autoplay muted playsinline loop></video> -->
+          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_1.mp4]" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_2.mp4]" autoplay muted playsinline loop></video>
+        </div>
+        <div class="video-gallery" id="contactPointsRow2">
+          <!-- REPLACE WITH YOUR VIDEOS -->
+          <!-- <video class="gallery-video" src="assets/videos/trashbin_contact.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/basket_contact.mp4" autoplay muted playsinline loop></video> -->
+          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_3.mp4]" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_4.mp4]" autoplay muted playsinline loop></video>
+        </div>
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+          <!-- Move button controls INSIDE caption container -->
+          <!-- <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
+          </div> -->
+          <!-- Caption text -->
+          <p class="figure-caption gallery-caption">
+              <b>Additional Result 1:</b> [Replace with description of additional experimental results or demonstrations]
+          </p>
+      </div>
+    </div>
+
+    <div class="tagline" id="additional-results-2">Further Demonstrations</div>
+
+    <!-- Video Gallery Section - mobile interlimb coordination -->
+    <div class="video-gallery-section" id="gallery-section-language">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="language">
+          <!-- REPLACE WITH YOUR VIDEOS -->
+          <!-- <video class="gallery-video" src="assets/videos/yogaball_language.mp4" autoplay muted playsinline loop></video> -->
+          <!-- <video class="gallery-video" src="assets/videos/toolchest_language.mp4" autoplay muted playsinline loop></video> -->
+          <video class="gallery-video" src="assets/videos/[YOUR_FURTHER_DEMO_VIDEO_1.mp4]" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="assets/videos/[YOUR_FURTHER_DEMO_VIDEO_2.mp4]" autoplay muted playsinline loop></video>
+        </div>
+<!--        <div class="gallery-caption-row">-->
+<!--          <p class="gallery-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1 Retargeted Results</p>-->
+<!--          <p class="gallery-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Egoview (RGB/Depth)</p>-->
+<!--        </div>-->
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+          <!-- Move button controls INSIDE caption container -->
+          <!-- <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
+          </div> -->
+          <!-- Caption text -->
+          <p class="figure-caption gallery-caption">
+              <b>Additional Result 2:</b> [Replace with description of further demonstrations or results]
+          </p>
+      </div>
+    </div>
+  <!-- End Video Gallery Section -->
+    
+    
+    <!-- End of main content -->
+    </main>
+    <footer class="footer">© [Your Name/Institution] [Year]</footer>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  JS                                                          -->
+  <!-- ============================================================ -->
+  <script src="assets/js/password.js"></script>
+  <script src="assets/js/full_screen_video.js"></script>
+  <script src="assets/js/scroll_button.js"></script>
+</body>
+</html>
