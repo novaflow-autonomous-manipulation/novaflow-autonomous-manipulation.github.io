@@ -214,9 +214,12 @@ The template is structured for research papers but can be adapted for any projec
     <div class="section">
       <video src="assets/mp4/method.mp4" style="width: 100%; margin: 20px 0 10px 0;" autoplay muted playsinline loop></video>
       <p class="figure-caption">
-        <b>Your Method Name:</b> [Replace this with a description of your methodology/approach]
-        Describe your technical approach, key innovations, and how your method solves the problem.
-        Include information about your algorithm, model architecture, training procedure, or experimental setup.
+        <b>Flow generator pipeline:</b> Given an initial image and a task prompt,  a video model is used to generate a video of the plausible object motion. This video is then processed by pretrained perception modules to distill an actionable 3D object flow. This involves (1) lifting the 2D video to 3D using monocular depth estimation, 
+        (2) calibrating the estimated depth against the initial depth, 
+        (3) tracking the dense per-point motion using 3D point tracking, 
+        and (4) extracting the object-centric 3D flow via object grounding.
+        <br/>
+        <b>Flow executor pipeline.</b> The initial end-effector pose is determined from grasp proposal candidates. Robot trajectories are then planned based on the actionable flow considering costs and constraints, and subsequently tracked by the robots.
       </p>
     </div>
     
