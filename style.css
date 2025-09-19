@@ -157,6 +157,100 @@
    .r2s-vertical-layout{display:flex;flex-direction:column;gap:10px;margin:0 0 5px;box-sizing:border-box}
    /* (other r2s rules unchanged…) */
    
+   .r2s-grid-container {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 15px;
+   }
+
+   .r2s-grid-item {
+     width: 300px;
+     text-align: center;
+   }
+
+   .r2s-video-caption {
+     margin-top: 10px;
+     font-family: 'Roboto Mono', monospace;
+     font-size: 14px;
+     color: #555;
+   }
+
+   /* Interactive viewer buttons */
+   .task-selector {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 10px;
+     margin-bottom: 20px;
+   }
+
+   .task-button {
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     background: #fff;
+     border: 1px solid #ccc;
+     border-radius: 6px;
+     padding: 8px 16px;
+     font-family: 'Roboto Mono', monospace;
+     font-size: 14px;
+     cursor: pointer;
+     transition: background-color 0.2s, color 0.2s;
+   }
+
+   .task-button:hover {
+     background-color: #f0f0f0;
+   }
+
+   .task-button.active {
+     background-color: #000;
+     color: #fff;
+     border-color: #000;
+   }
+
+   .viewer-container {
+     display: flex;
+     gap: 20px;
+   }
+
+   #task-viewer {
+     flex: 3; /* Takes up 3/4 of the space */
+   }
+
+   .media-column {
+     flex: 1; /* Takes up 1/4 of the space */
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+   }
+
+   .media-item {
+     display: flex;
+     flex-direction: column;
+     height: calc((500px - 20px) / 3); /* Account for gaps to match iframe height */
+   }
+
+   .media-item p {
+     margin: 0 0 5px 0;
+     font-family: 'Roboto Mono', monospace;
+     font-size: 14px;
+     text-align: center;
+     flex-shrink: 0; /* Prevent label from shrinking */
+   }
+
+   .media-item img,
+   .media-item video {
+     width: 100%;
+     flex-grow: 1; /* Fill remaining space */
+     min-height: 0; /* Prevent overflow */
+     object-fit: cover;
+     border-radius: 6px;
+     margin: 0 20px;
+     box-sizing: border-box;
+     box-shadow: 0 4px 12px rgba(0,0,0,.15);
+   }
+
    .section{font-size:20px;line-height:1.7;margin:0 0 40px}
    .pull-quote{font-size:32px;font-style:italic;font-weight:400;margin:60px 0 20px;color:#333}
    

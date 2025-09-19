@@ -59,7 +59,7 @@ The template is structured for research papers but can be adapted for any projec
       </video>
       <div class="overlay"></div>
       <div class="bottom-overlay" style="padding:0 24px;">
-        <h1>Your Project Title<br/><span style="font-size: 0.7em; font-weight: 300;">Your Project Subtitle</span></h1>
+        <h1>NovaFlow<br/><span style="font-size: 0.7em; font-weight: 300;">Zero-Shot Manipulation via Actionable Flow from Generated Videos</span></h1>
       </div>
       <!-- Scroll indicator -->
       <div class="scroll-indicator" onclick="scrollToContent()">
@@ -71,24 +71,48 @@ The template is structured for research papers but can be adapted for any projec
     <main class="main-content">
       <!-- <div class="hero-text">Versatile Loco-Manipulation through Flexible Interlimb Coordination</div> -->
 
-      <div class="sub-hero-text">Your Project Subtitle</div>
+      <div class="sub-hero-text">NovaFlow: Zero-Shot Manipulation via Actionable Flow from Generated Videos</div>
 
-      <!-- <div class="authors">CoRL 2025 Submission 925<br/></div> -->
+      <div class="authors">Annoymous Authors<br/></div>
 
       <!-- <div class="quick-links"><a href="paper.pdf" target="_blank">[pdf]</a><a href="#" onclick="return false;">[arXiv (after review)]</a><a href="#" onclick="return false;">[code (after review)]</a></div> -->
 
       <div class="tagline" id="abstract">Abstract</div>
       <div class="section">
         <p>
-          [Replace this placeholder text with your project abstract. Describe your research problem, approach, key contributions, and results.]
-          This template is designed for research project websites. Include information about your methodology, experimental setup,
-          key findings, and impact. Make sure to highlight what makes your work novel and important.
+          Enabling robots to execute novel manipulation tasks zero-shot is a central goal in robotics. Most existing methods assume in-distribution tasks or rely on fine-tuning with embodiment-matched data, limiting transfer across platforms. We present NovaFlow, an autonomous manipulation framework that converts a task description into an actionable plan for a target robot without any demonstrations. Given a task description, NovaFlow synthesizes a video using a video generation model and distills it into 3D actionable object flow using off-the-shelf perception modules. From the object flow, it computes relative poses for rigid objects and realizes them as robot actions via grasp proposals and trajectory optimization. For deformable objects, this flow serves as a tracking objective for model-based planning with a particle-based dynamics model. By decoupling task understanding from low-level control, NovaFlow naturally transfers across embodiments. We validate on rigid, articulated, and deformable object manipulation tasks using a table-top Franka arm and a Spot quadrupedal mobile robot, and achieve effective zero-shot execution without demonstrations or embodiment-specific training.
         </p>
       </div>
 
-      <div class="tagline" id="video-gallery-title">Key Results</div>
+      <div class="tagline" id="interactive-viewer">Interactive Viewer</div>
+      <!-- TODO: add starting image + generated video + execution video -->
       <div class="section">
-          <iframe src="viser-client/?playbackPath=../recording.viser&initialCameraPosition=0,0,0&initialCameraLookAt=0.0,0.0,1.0&initialCameraUp=0.0,-1.0,0.0" style="display: block; margin: 0 auto; width: 90%; height: 500px; border: none;"></iframe>
+        <div class="task-selector" id="task-buttons">
+          <!-- TODO: Not selector, put in one row -->
+          <button type="button" class="task-button active" data-value="open-drawer">open drawer</button>
+          <button type="button" class="task-button" data-value="hang-mug">hang mug</button>
+          <button type="button" class="task-button" data-value="cup-on-saucer">cup on saucer</button>
+          <button type="button" class="task-button" data-value="block-insertion">block insertion</button>
+          <button type="button" class="task-button" data-value="water-plant">water plant</button>
+          <button type="button" class="task-button" data-value="open-lid">open lid</button>
+        </div>
+        <div class="viewer-container">
+          <iframe id="task-viewer" src="assets/viser-client/?playbackPath=assets/recording.viser&initialCameraPosition=0,0,0&initialCameraLookAt=0.0,0.0,1.0&initialCameraUp=0.0,-1.0,0.0"  style="display: block; width: 100%; height: 500px; border: none;"></iframe>
+          <div class="media-column">
+            <div class="media-item">
+              <p>Initial Observation</p>
+              <img src="assets/img/start.png" alt="Initial Observation">
+            </div>
+            <div class="media-item">
+              <p>Generated Video</p>
+              <video src="assets/img/wan.mp4" autoplay muted playsinline loop></video>
+            </div>
+            <div class="media-item">
+              <p>Execution Video</p>
+              <video src="assets/img/camera0.mp4" autoplay muted playsinline loop></video>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Video Gallery Section - mobile interlimb coordination -->
@@ -186,6 +210,7 @@ The template is structured for research papers but can be adapted for any projec
       </div>
 
     <div class="tagline" id="methods">Methods</div>
+    <!-- TODO: use ppt do a gif -->
     <div class="section">
       <img src="assets/images/[YOUR_METHODS_DIAGRAM.png]" alt="Methods overview diagram" style="width: 100%; margin: 20px 0 10px 0;" loading="eager" decoding="async">
       <p class="figure-caption">
@@ -349,7 +374,7 @@ The template is structured for research papers but can be adapted for any projec
     
     <!-- End of main content -->
     </main>
-    <footer class="footer">© [Your Name/Institution] [Year]</footer>
+    <footer class="footer">© Annoymous Authors, 2025</footer>
   </div>
 
   <!-- ============================================================ -->
@@ -358,5 +383,6 @@ The template is structured for research papers but can be adapted for any projec
   <script src="assets/js/password.js"></script>
   <script src="assets/js/full_screen_video.js"></script>
   <script src="assets/js/scroll_button.js"></script>
+  <script src="assets/js/task-switcher.js"></script>
 </body>
 </html>
