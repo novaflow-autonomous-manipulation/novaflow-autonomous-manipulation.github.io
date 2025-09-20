@@ -38,7 +38,7 @@ The template is structured for research papers but can be adapted for any projec
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research Project Template</title>
+  <title>NovaFlow Project Website</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <!-- ‑‑‑‑‑‑  STYLE SHEETS  ‑‑‑‑‑‑  -->
@@ -96,7 +96,12 @@ The template is structured for research papers but can be adapted for any projec
           <button type="button" class="task-button" data-value="water">water plant</button>
         </div>
         <div class="viewer-container">
-          <iframe id="task-viewer" style="display: block; width: 100%; height: 500px; border: none;"></iframe>
+          <div class="viewer-main">
+            <iframe id="task-viewer" style="display: block; width: 100%; height: 500px; border: none;"></iframe>
+            <p class="figure-caption">
+              3D Point Cloud & Actionable Flow from Generated Video
+            </p>
+          </div>
           <div class="media-column">
             <div class="media-item">
               <p>Initial Observation</p>
@@ -111,100 +116,6 @@ The template is structured for research papers but can be adapted for any projec
               <video id="execution-video" autoplay muted playsinline loop></video>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Video Gallery Section - mobile interlimb coordination -->
-      <div class="video-gallery-section" id="gallery-section-mobileinterlimb">
-        <div class="video-gallery-container">
-          <div class="video-gallery" id="mobileinterlimb">
-            <!-- REPLACE WITH YOUR VIDEOS -->
-            <!-- <video class="gallery-video" src="assets/videos/yogaball.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/shippingbox.mp4" autoplay muted playsinline loop></video> -->
-            <!-- Add your video files here: -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_1.mp4]" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_2.mp4]" autoplay muted playsinline loop></video> -->
-          </div>
-        </div>
-        <!-- Container for the caption AND buttons -->
-        <div class="gallery-caption-container">
-            <!-- Move button controls INSIDE caption container -->
-            <!-- <div class="gallery-nav-controls">
-                <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
-                <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
-            </div> -->
-            <!-- Caption text -->
-            <p class="figure-caption gallery-caption">
-                <b>Result 1:</b> [Replace with description of your first key result or demonstration]
-            </p>
-        </div>
-      </div>
-    <!-- End Video Gallery Section -->
-    <!-- Video Gallery Section - Stationary interlimb coordination -->
-    <div class="video-gallery-section" id="gallery-section-stationaryinterlimb">
-      <div class="video-gallery-container">
-        <div class="video-gallery" id="videoGalleryStationaryInterlimbRow1">
-          <!-- REPLACE WITH YOUR VIDEOS -->
-          <!-- <video class="gallery-video" src="assets/videos/tirepump.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/trashbin.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_3.mp4]" autoplay muted playsinline loop></video> -->
-        </div>
-        <div class="video-gallery" id="videoGalleryStationaryInterlimbRow2">
-          <!-- <video class="gallery-video" src="assets/videos/deckbox.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/smallbin.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_4.mp4]" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_5.mp4]" autoplay muted playsinline loop></video> -->
-        </div>
-      </div>
-      <!-- Container for the caption AND buttons -->
-      <div class="gallery-caption-container">
-          <!-- Move button controls INSIDE caption container -->
-          <!-- <div class="gallery-nav-controls">
-              <button class="gallery-nav left" id="scrollLeftBtnStationaryInterlimb">&lt;</button>
-              <button class="gallery-nav right" id="scrollRightBtnStationaryInterlimb">&gt;</button>
-          </div> -->
-          <!-- Caption text -->
-            <p class="figure-caption gallery-caption">
-                <b>Result 2:</b> [Replace with description of your second key result or demonstration]
-            </p>
-      </div>
-    </div>
-    <!-- End Video Gallery Section -->
-
-    <!-- Video Gallery Section - Foot-assisted manipulation -->
-      <div class="video-gallery-section" id="gallery-section-footassistedmanipulation">
-        <div class="video-gallery-container">
-          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow1">
-            <!-- REPLACE WITH YOUR VIDEOS -->
-            <!-- <video class="gallery-video" src="assets/videos/toolchest.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/storagebin.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_6.mp4]" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_7.mp4]" autoplay muted playsinline loop></video> -->
-          </div>
-          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow2">
-            <!-- <video class="gallery-video" src="assets/videos/chair.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/basket.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_8.mp4]" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_9.mp4]" autoplay muted playsinline loop></video> -->
-          </div>
-          <div class="video-gallery" id="videoGalleryFootAssistedManipulationRow3">
-            <!-- <video class="gallery-video" src="assets/videos/drawer.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/laundrybag.mp4" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_10.mp4]" autoplay muted playsinline loop></video> -->
-            <!-- <video class="gallery-video" src="assets/videos/[YOUR_VIDEO_11.mp4]" autoplay muted playsinline loop></video> -->
-          </div>
-        </div>
-        <!-- Container for the caption AND buttons -->
-        <div class="gallery-caption-container">
-            <!-- Move button controls INSIDE caption container -->
-            <!-- <div class="gallery-nav-controls">
-                <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
-                <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
-            </div> -->
-            <!-- Caption text -->
-            <p class="figure-caption gallery-caption">
-                <b>Result 3:</b> [Replace with description of your third key result or demonstration]
-            </p>
         </div>
       </div>
 
@@ -229,10 +140,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="cup_on_plate">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/first_rgb_cup_on_plate_seed_48.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/wan_video_cup_on_plate_seed_48.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/flow_visualization_cup_on_plate_seed_48.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/real_experiement_camera_0_cup_on_plate_seed_48_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/first_rgb_cup_on_plate_seed_48.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/wan_video_cup_on_plate_seed_48.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/flow_visualization_cup_on_plate_seed_48.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/cup_on_plate/hjiux8ft/real_experiement_camera_0_cup_on_plate_seed_48_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -254,10 +177,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="open_drawer">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/first_rgb_drawer_open_seed_47.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/wan_video_drawer_open_seed_47.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/flow_visualization_drawer_open_seed_47.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/real_experiement_camera_0_drawer_open_seed_47_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/first_rgb_drawer_open_seed_47.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/wan_video_drawer_open_seed_47.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/flow_visualization_drawer_open_seed_47.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/drawer_open/phf8ho3j/real_experiement_camera_0_drawer_open_seed_47_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -279,10 +214,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="hang_mug">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/first_rgb_hang_mug_seed_44.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/wan_video_hang_mug_seed_44.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/flow_visualization_hang_mug_seed_44.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/real_experiement_camera_0_hang_mug_seed_44_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/first_rgb_hang_mug_seed_44.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/wan_video_hang_mug_seed_44.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/flow_visualization_hang_mug_seed_44.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/hang_mug/wmmoiuwt/real_experiement_camera_0_hang_mug_seed_44_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -304,10 +251,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="block_insertion">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/first_rgb_yellow_block_insertion_seed_49.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/wan_video_yellow_block_insertion_seed_49.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/flow_visualization_yellow_block_insertion_seed_49.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/real_experiement_camera_0_yellow_block_insertion_seed_49_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/first_rgb_yellow_block_insertion_seed_49.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/wan_video_yellow_block_insertion_seed_49.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/flow_visualization_yellow_block_insertion_seed_49.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/yellow_block_insertion/mfgdbnuu/real_experiement_camera_0_yellow_block_insertion_seed_49_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -329,10 +288,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="water_plant">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/first_rgb_water_plant_seed_46.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/wan_video_water_plant_seed_46.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/flow_visualization_water_plant_seed_46.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/real_experiement_camera_0_water_plant_seed_46_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/first_rgb_water_plant_seed_46.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/wan_video_water_plant_seed_46.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/flow_visualization_water_plant_seed_46.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/water_plant/zjq8z2q9/real_experiement_camera_0_water_plant_seed_46_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -354,10 +325,22 @@ The template is structured for research papers but can be adapted for any projec
         <div class="video-gallery-container">
           <div class="video-gallery" id="open_lid">
             <!-- Videos remain here - ADD autoplay -->
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/first_rgb_open_lid_seed_46.png" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/wan_video_open_lid_seed_46.mp4" autoplay muted playsinline loop></video>
-            <img class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/flow_visualization_open_lid_seed_46.jpg" />
-            <video class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/real_experiement_camera_0_open_lid_seed_46_2x.mp4" autoplay muted playsinline loop></video>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/first_rgb_open_lid_seed_46.png" />
+              <div class="r2s-video-caption">Initial observation</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/wan_video_open_lid_seed_46.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Generated video</div>
+            </div>
+            <div class="gallery-item">
+              <img class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/flow_visualization_open_lid_seed_46.jpg" />
+              <div class="r2s-video-caption">Flow visualization</div>
+            </div>
+            <div class="gallery-item">
+              <video class="gallery-video" src="assets/wandb/media/real_experiment/open_lid/b1tsdqyy/real_experiement_camera_0_open_lid_seed_46_2x.mp4" autoplay muted playsinline loop></video>
+              <div class="r2s-video-caption">Execution video (2x speed)</div>
+            </div>
             <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
           </div>
         </div>
@@ -375,69 +358,8 @@ The template is structured for research papers but can be adapted for any projec
         </div>
       </div>
     <!-- End of Ablations -->
-    <!-- Start of Limitations/Discussion -->
-    <div class="tagline" id="limitations">Limitations</div>
-    <div class="video-gallery-section" id="gallery-section-failures">
-      <div class="video-gallery-container">
-        <div class="video-gallery" id="failures">
-          <!-- REPLACE WITH YOUR LIMITATIONS/FAILURE CASE VIDEOS -->
-          <!-- <video class="gallery-video" src="assets/videos/failure_cases/slaminaccuracy_1.mp4" autoplay muted playsinline loop></video> -->
-          <!-- ... other failure videos commented out ... -->
-          <!-- <video class="gallery-video" src="assets/videos/[YOUR_LIMITATIONS_VIDEO_1.mp4]" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/[YOUR_LIMITATIONS_VIDEO_2.mp4]" autoplay muted playsinline loop></video> -->
-          <!-- Add your limitation/failure case videos here -->
-        </div>
-      </div>
-      <!-- Container for the caption AND buttons -->
-      <div class="gallery-caption-container">
-        <!-- Move button controls INSIDE caption container -->
-        <div class="gallery-nav-controls">
-            <button class="gallery-nav left" id="scrollLeftBtnFailures">&lt;</button>
-            <button class="gallery-nav right" id="scrollRightBtnFailures">&gt;</button>
-        </div>
-        <!-- Caption text -->
-            <p class="figure-caption gallery-caption">
-            <b>Limitations:</b> [Replace with discussion of your method's limitations, failure cases, or areas for future work]
-        </p>
-      </div>
-    </div>
-    <!-- End of Failures -->
 
-    <div class="tagline" id="additional-results">Additional Results</div>
-
-    <!-- Video Gallery Section - mobile interlimb coordination -->
-    <div class="video-gallery-section" id="gallery-section-contactpoints">
-      <div class="video-gallery-container">
-        <div class="video-gallery" id="contactPointsRow1">
-          <!-- REPLACE WITH YOUR VIDEOS -->
-          <!-- <video class="gallery-video" src="assets/videos/yogaball_contact.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/toolchest_contact.mp4" autoplay muted playsinline loop></video> -->
-          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_1.mp4]" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_2.mp4]" autoplay muted playsinline loop></video>
-        </div>
-        <div class="video-gallery" id="contactPointsRow2">
-          <!-- REPLACE WITH YOUR VIDEOS -->
-          <!-- <video class="gallery-video" src="assets/videos/trashbin_contact.mp4" autoplay muted playsinline loop></video> -->
-          <!-- <video class="gallery-video" src="assets/videos/basket_contact.mp4" autoplay muted playsinline loop></video> -->
-          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_3.mp4]" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="assets/videos/[YOUR_ADDITIONAL_VIDEO_4.mp4]" autoplay muted playsinline loop></video>
-        </div>
-      </div>
-      <!-- Container for the caption AND buttons -->
-      <div class="gallery-caption-container">
-          <!-- Move button controls INSIDE caption container -->
-          <!-- <div class="gallery-nav-controls">
-              <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
-              <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
-          </div> -->
-          <!-- Caption text -->
-          <p class="figure-caption gallery-caption">
-              <b>Additional Result 1:</b> [Replace with description of additional experimental results or demonstrations]
-          </p>
-      </div>
-    </div>
-
-    <div class="tagline" id="additional-results-2">Further Demonstrations</div>
+    <div class="tagline" id="experiment-results">Experiment Results</div>
 
     <!-- Video Gallery Section - mobile interlimb coordination -->
     <div class="video-gallery-section" id="gallery-section-language">
@@ -446,24 +368,16 @@ The template is structured for research papers but can be adapted for any projec
           <!-- REPLACE WITH YOUR VIDEOS -->
           <!-- <video class="gallery-video" src="assets/videos/yogaball_language.mp4" autoplay muted playsinline loop></video> -->
           <!-- <video class="gallery-video" src="assets/videos/toolchest_language.mp4" autoplay muted playsinline loop></video> -->
-          <video class="gallery-video" src="assets/videos/[YOUR_FURTHER_DEMO_VIDEO_1.mp4]" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="assets/videos/[YOUR_FURTHER_DEMO_VIDEO_2.mp4]" autoplay muted playsinline loop></video>
+          <img class="gallery-video" src="assets/img/experiment_results_arial.png" alt="Experiment Results">
         </div>
-<!--        <div class="gallery-caption-row">-->
-<!--          <p class="gallery-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1 Retargeted Results</p>-->
-<!--          <p class="gallery-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Egoview (RGB/Depth)</p>-->
-<!--        </div>-->
       </div>
       <!-- Container for the caption AND buttons -->
       <div class="gallery-caption-container">
-          <!-- Move button controls INSIDE caption container -->
-          <!-- <div class="gallery-nav-controls">
-              <button class="gallery-nav left" id="scrollLeftBtnMobileInterlimb">&lt;</button>
-              <button class="gallery-nav right" id="scrollRightBtnMobileInterlimb">&gt;</button>
-          </div> -->
-          <!-- Caption text -->
           <p class="figure-caption gallery-caption">
-              <b>Additional Result 2:</b> [Replace with description of further demonstrations or results]
+              <b>Experiment Results:</b> 
+              NovaFlow consistently achieves the highest success rate across all real-world manipulation tasks.
+              <br/>
+            It outperforms other demonstration-free methods like AVDC and VidBot. Notably, NovaFlow also surpasses data-dependent methods, including Diffusion Policy (trained with 10 and 30 demonstrations) and an Inverse Dynamics Model, in every task evaluated.
           </p>
       </div>
     </div>
@@ -472,7 +386,8 @@ The template is structured for research papers but can be adapted for any projec
     
     <!-- End of main content -->
     </main>
-    <footer class="footer">Some website materials are adapted from <a href="https://www.videomimic.net/">VideoMimic</a> and <a href="https://transic-robot.github.io/">TRANSIC</a></footer>
+    <footer class="footer">Some website materials are adapted from <a href="https://www.videomimic.net/">VideoMimic</a>, <a href="https://transic-robot.github.io/">TRANSIC</a> and <a href="https://viser.studio/main/">Viser</a>
+    </footer>
   </div>
 
   <!-- ============================================================ -->

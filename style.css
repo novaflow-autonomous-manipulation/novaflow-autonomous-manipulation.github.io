@@ -112,6 +112,13 @@
    .video-gallery{display:flex;gap:15px;padding:0 20px 10px;width:max-content;margin:0 auto}
    .gallery-video{flex:0 0 auto;height:280px;width:auto;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,.15);background:#fdfaf4}
 
+   .gallery-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 10px;
+   }
+
    /* Single video gallery styles */
    .video-gallery-container.single-video .video-gallery {
      width: 100%;
@@ -216,6 +223,24 @@
 
    #task-viewer {
      flex: 3; /* Takes up 3/4 of the space */
+   }
+
+   .viewer-main {
+     flex: 3;
+     display: flex;
+     flex-direction: column;
+   }
+
+   .viewer-main #task-viewer {
+       flex-grow: 1;
+   }
+
+   .viewer-main p {
+       margin: 0 0 5px 0;
+       font-family: 'Roboto Mono', monospace;
+       font-size: 14px;
+       text-align: center;
+       flex-shrink: 0;
    }
 
    .media-column {
