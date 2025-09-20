@@ -135,6 +135,151 @@ def concatenate_images_horizontally(images, output_path=None):
 
     return concatenated
 
+
+def download_media_from_run(run, media_key, output_dir, output_filename=None):
+    """
+    Downloads a media file (image or video) from a wandb run summary.
+    """
+    if not (run.summary and media_key in run.summary):
+        print(f"\n'{media_key}' not found in run summary.")
+        if run.summary:
+            print(f"Available summary keys: {list(run.summary.keys())}")
+        return None
+
+    media_obj = run.summary[media_key]
+    print(f"\nFound '{media_key}' in run summary (type: {type(media_obj)})")
+
+    if hasattr(media_obj, 'keys'):
+        print(f"Media object keys: {list(media_obj.keys())}")
+
+    media_type = media_obj.get('_type')
+    if media_type not in ['video-file', 'image-file']:
+        print(f"Not a recognized media type: {media_type}")
+        return None
+
+    if 'path' not in media_obj:
+        print(f"'path' not found in media object for key '{media_key}'")
+        return None
+
+    media_path = media_obj['path']
+    print(f"Media path from wandb: {media_path}")
+
+    # Find and download the file
+    files = run.files()
+    target_file = None
+    for file in files:
+        if file.name == media_path:
+            target_file = file
+            break
+
+    if not target_file:
+        print(f"Target file '{media_path}' not found in run files.")
+        return None
+
+    print(f"Found target file: {target_file.name} ({target_file.size} bytes)")
+
+    # Download the file to a temporary directory
+    with tempfile.TemporaryDirectory() as tmpdir:
+        target_file.download(root=tmpdir, replace=True)
+        downloaded_file_path = os.path.join(tmpdir, target_file.name)
+
+        if os.path.exists(downloaded_file_path) and os.path.getsize(downloaded_file_path) > 0:
+            print(f"Successfully downloaded to: {downloaded_file_path}")
+
+            if not output_filename:
+                # keep original extension
+                _, ext = os.path.splitext(os.path.basename(media_path))
+                output_filename = f"{media_key}_{run.name}{ext}"
+
+            final_output_path = os.path.join(output_dir, output_filename)
+            shutil.copy2(downloaded_file_path, final_output_path)
+            print(f"Saved media to: {final_output_path}")
+            return final_output_path
+        else:
+            print("Downloaded file not found or is empty.")
+            return None
+
+
+def save_text_from_run(run, text_key, output_dir, output_filename=None):
+    """
+    Saves a text string from a wandb run summary to a text file.
+    """
+    if not (run.summary and text_key in run.summary):
+        print(f"\n'{text_key}' not found in run summary.")
+        if run.summary:
+            print(f"Available summary keys: {list(run.summary.keys())}")
+        return None
+
+    text_content = run.summary[text_key]
+    print(f"\nFound '{text_key}' in run summary.")
+
+    if not isinstance(text_content, str):
+        print(f"Content of '{text_key}' is not a string (type: {type(text_content)}).")
+        return None
+
+    if not output_filename:
+        output_filename = f"{text_key}_{run.name}.txt"
+
+    final_output_path = os.path.join(output_dir, output_filename)
+
+    try:
+        with open(final_output_path, 'w') as f:
+            f.write(text_content)
+        print(f"Saved text to: {final_output_path}")
+        return final_output_path
+    except Exception as e:
+        print(f"Error saving text file: {e}")
+        return None
+
+
+def speed_up_video(video_path, speed_factor=2):
+    """
+    Speed up a video using ffmpeg.
+
+    Args:
+        video_path (str): Path to the input video file
+        speed_factor (int): Factor by which to speed up the video (e.g., 2 for 2x)
+    """
+    if not os.path.exists(video_path):
+        print(f"Video file not found: {video_path}")
+        return
+
+    # Get the directory and filename
+    directory, filename = os.path.split(video_path)
+    name, ext = os.path.splitext(filename)
+
+    # Define the output path for the sped-up video
+    output_path = os.path.join(directory, f"{name}_{speed_factor}x{ext}")
+
+    # Construct the ffmpeg command
+    # Use -y to overwrite output file if it exists
+    # Use -an to remove audio
+    command = [
+        "ffmpeg",
+        "-i", video_path,
+        "-y",
+        "-filter:v", f"setpts={1/speed_factor}*PTS",
+        "-an",  # No audio
+        output_path
+    ]
+
+    print(f"Running ffmpeg command: {' '.join(command)}")
+
+    try:
+        # Run the command
+        import subprocess
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
+        print("FFmpeg output:", result.stdout)
+        print("FFmpeg error:", result.stderr)
+        print(f"Successfully created sped-up video: {output_path}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error running ffmpeg: {e}")
+        print("FFmpeg output:", e.stdout)
+        print("FFmpeg error:", e.stderr)
+    except FileNotFoundError:
+        print("ffmpeg not found. Please ensure it is installed and in your system's PATH.")
+
+
 def _matches_filters(run, filters):
     """Check if a run matches all the provided filters."""
     for filter_dict in filters:
@@ -260,129 +405,19 @@ def save_flow_visualization(run, base_output_dir="/Users/hongyu/Documents/RAI_pr
         print(f"Concatenated image already exists: {concat_output_path}. Skipping.")
         return output_dir
 
-    # Check if flow_visualization_object exists in summary
-    if not (run.summary and 'flow_visualization_object' in run.summary):
-        print("flow_visualization_object not found in run summary")
-        print(f"Available summary keys: {list(run.summary.keys()) if run.summary else 'None'}")
+    # Download flow visualization object
+    flow_output_path = download_media_from_run(run, 'flow_visualization_object', output_dir, f"flow_visualization_{run.name}.jpg")
+
+    if not flow_output_path:
+        print("Failed to download flow visualization.")
+        return output_dir
+    
+    try:
+        flow_pil_image = Image.open(flow_output_path)
+    except Exception as e:
+        print(f"Error reading flow visualization image: {e}")
         return output_dir
 
-    flow_viz = run.summary['flow_visualization_object']
-    print(f"Found flow_visualization_object: {type(flow_viz)}")
-
-    # Print available keys for debugging
-    if hasattr(flow_viz, 'keys'):
-        keys = list(flow_viz.keys())
-        print(f"Available keys: {keys}")
-        for key in keys[:5]:
-            value = flow_viz[key]
-            print(f"  {key}: {type(value)} - {str(value)[:100]}...")
-
-    # Try to access image data directly
-    import numpy as np
-
-    image_data = None
-    for key in ['image', '_image', 'data', 'value']:
-        if key in flow_viz:
-            print(f"Found '{key}' key")
-            image_data = flow_viz[key]
-            break
-
-    if image_data is not None and isinstance(image_data, np.ndarray):
-        print(f"Image data shape: {image_data.shape}")
-
-        # Convert numpy array to PIL Image
-        if len(image_data.shape) == 3 and image_data.shape[2] == 3:  # RGB image
-            flow_pil_image = Image.fromarray((image_data * 255).astype(np.uint8))
-        elif len(image_data.shape) == 2:  # Grayscale image
-            flow_pil_image = Image.fromarray((image_data * 255).astype(np.uint8), mode='L')
-        else:
-            print(f"Unsupported image data shape: {image_data.shape}")
-            return output_dir
-
-        output_path = os.path.join(output_dir, f"flow_visualization_{run.name}.jpg")
-        
-        # Convert to RGB before saving as JPEG
-        if flow_pil_image.mode != 'RGB':
-            flow_pil_image = flow_pil_image.convert('RGB')
-            
-        flow_pil_image.save(output_path, 'JPEG', quality=95)
-        print(f"Saved flow visualization to: {output_path}")
-
-    # Handle image-file type objects
-    if flow_viz.get('_type') == 'image-file' and 'path' in flow_viz:
-        image_path = flow_viz['path']
-        print(f"Image path: {image_path}")
-
-        # Find and download the file
-        files = run.files()
-        target_file = None
-
-        for file in files:
-            if file.name == image_path:
-                target_file = file
-                break
-
-        if not target_file:
-            print(f"Target file {image_path} not found in run files")
-            return output_dir
-
-        print(f"Found target file: {target_file.name} ({target_file.size} bytes)")
-
-        # Download the file
-        target_file.download(replace=True)
-
-        # Find the downloaded file - check both full path and basename
-        import shutil
-        expected_filename = os.path.basename(image_path)
-        downloaded_file = None
-
-        # First check if the full path exists (wandb preserves directory structure)
-        if os.path.exists(image_path) and os.path.getsize(image_path) > 0:
-            downloaded_file = image_path
-            print(f"Found downloaded file at full path: {downloaded_file}")
-        # Then check if just the filename exists
-        elif os.path.exists(expected_filename) and os.path.getsize(expected_filename) > 0:
-            downloaded_file = expected_filename
-            print(f"Found downloaded file at basename: {downloaded_file}")
-        else:
-            # List current directory to see what's actually there
-            current_files = os.listdir('.')
-            print(f"Files in current directory after download: {current_files[:10]}")  # Show first 10
-            print("Downloaded file not found or empty")
-            return output_dir
-
-        # Directly copy the downloaded file to the desired output path
-        output_path = os.path.join(output_dir, f"flow_visualization_{run.name}.jpg")
-        
-        # Open the image, convert to RGB, and save as JPEG
-        try:
-            with Image.open(downloaded_file) as img:
-                if img.mode != 'RGB':
-                    img = img.convert('RGB')
-                img.save(output_path, 'JPEG', quality=95)
-            print(f"Converted and saved flow visualization to: {output_path}")
-        except Exception as e:
-            print(f"Error converting image to JPEG: {e}")
-            # Fallback to simple copy if conversion fails
-            import shutil
-            shutil.copy2(downloaded_file, output_path)
-            print(f"Copied flow visualization to: {output_path}")
-
-
-        # Clean up the downloaded file
-        if os.path.exists(downloaded_file):
-            os.unlink(downloaded_file)
-
-        # Read the copied image for concatenation
-        try:
-            flow_pil_image = Image.open(output_path)
-        except Exception as e:
-            print(f"Error reading flow visualization image: {e}")
-            return output_dir
-
-    else:
-        print(f"Not a recognized wandb media type: {getattr(flow_viz, '_type', 'unknown')}")
-        print(f"Available keys: {list(flow_viz.keys()) if hasattr(flow_viz, 'keys') else 'No keys'}")
 
     # Check if we have a flow visualization image (either from numpy array or file)
     if 'flow_pil_image' in locals():
@@ -466,78 +501,25 @@ def download_and_visualize_flow_from_run(run, base_output_dir="/Users/hongyu/Doc
         print(f"All files already exist for run {run.name} (ID: {run.id}). Skipping.")
         return
 
-    # First, check for and download real_experiement_camera_0 video if it exists
-    if run.summary and 'real_experiement_camera_0' in run.summary:
-        print("\nFound real_experiement_camera_0 video in run summary")
-        video_obj = run.summary['real_experiement_camera_0']
-        print(f"Video object type: {type(video_obj)}")
+    # Media keys to download
+    media_keys_to_download = ['real_experiement_camera_0', 'first_rgb', 'wan_video']
+    downloaded_paths = {}
 
-        if hasattr(video_obj, 'keys'):
-            print(f"Video object keys: {list(video_obj.keys())}")
+    for key in media_keys_to_download:
+        path = download_media_from_run(run, key, output_dir)
+        if path:
+            downloaded_paths[key] = path
 
-        # Handle video file downloads
-        if video_obj.get('_type') == 'video-file' and 'path' in video_obj:
-            video_path = video_obj['path']
-            print(f"Video path: {video_path}")
+    # Save text prompts
+    save_text_from_run(run, 'wan_prompt_extended', output_dir)
+    save_text_from_run(run, 'wan_prompt_original', output_dir)
 
-            # Find and download the video file
-            files = run.files()
-            target_file = None
-
-            for file in files:
-                if file.name == video_path:
-                    target_file = file
-                    break
-
-            if not target_file:
-                print(f"Target video file {video_path} not found in run files")
-            else:
-                print(f"Found target video file: {target_file.name} ({target_file.size} bytes)")
-
-                # Download the video file
-                target_file.download(replace=True)
-
-                # Find the downloaded file
-                import shutil
-                expected_filename = os.path.basename(video_path)
-                downloaded_file = None
-
-                # First check if the full path exists
-                if os.path.exists(video_path) and os.path.getsize(video_path) > 0:
-                    downloaded_file = video_path
-                    print(f"Found downloaded video at full path: {downloaded_file}")
-                # Then check if just the filename exists
-                elif os.path.exists(expected_filename) and os.path.getsize(expected_filename) > 0:
-                    downloaded_file = expected_filename
-                    print(f"Found downloaded video at basename: {downloaded_file}")
-                else:
-                    # List current directory to see what's there
-                    current_files = os.listdir('.')
-                    print(f"Files in current directory after download: {current_files[:10]}")
-                    print("Downloaded video file not found or empty")
-                    downloaded_file = None
-
-                if downloaded_file:
-                    # Copy the video to the same output directory as the flow visualization
-                    video_output_path = os.path.join(output_dir, f"real_experiement_camera_0_{run.name}.mp4")
-                    shutil.copy2(downloaded_file, video_output_path)
-                    print(f"Saved video to: {video_output_path}")
-
-                    # Clean up the downloaded file
-                    if os.path.exists(downloaded_file):
-                        os.unlink(downloaded_file)
-
-        elif hasattr(video_obj, '_type') and video_obj._type in ['video', 'mp4']:
-            print("Direct video object found, attempting to save...")
-            # Handle direct video objects if they exist
-            # This would depend on the specific wandb video object structure
-            print("Direct video object handling not implemented yet")
-        else:
-            print(f"Not a recognized video type: {getattr(video_obj, '_type', 'unknown')}")
-    else:
-        print("\nreal_experiement_camera_0 not found in run summary")
-        if run.summary:
-            print(f"Available summary keys: {list(run.summary.keys())}")
+    # Speed up videos if they were downloaded
+    if 'real_experiement_camera_0' in downloaded_paths:
+        speed_up_video(downloaded_paths['real_experiement_camera_0'], speed_factor=2)
+    
+    if 'wan_video' in downloaded_paths:
+        speed_up_video(downloaded_paths['wan_video'], speed_factor=2)
 
     # Now process the flow visualization
     save_flow_visualization(run, base_output_dir)
@@ -581,4 +563,4 @@ if __name__ == "__main__":
     for i in range(len(filtered_runs)):
         selected_run = filtered_runs[i]
         print(f"Using run: {selected_run.name} (ID: {selected_run.id} Group: {selected_run.group})")
-        download_and_visualize_flow_from_run(selected_run, "/Users/hongyu/Documents/RAI_project/Figure")
+        download_and_visualize_flow_from_run(selected_run, "/home/holi/Desktop/novaflow-autonomous-manipulation.github.io/assets/wandb")

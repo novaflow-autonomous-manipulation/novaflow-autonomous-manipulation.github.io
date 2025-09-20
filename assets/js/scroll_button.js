@@ -2,10 +2,40 @@
 document.addEventListener('DOMContentLoaded', function() {
   const galleries = [
     {
-      sectionId: 'gallery-section-multi_limb_co_tracking',
-      galleryInnerId: 'multi_limb_co_tracking',
-      scrollLeftBtnId: 'scrollLeftBtnMulti_limb_co_tracking',
-      scrollRightBtnId: 'scrollRightBtnMulti_limb_co_tracking'
+      sectionId: 'gallery-section-cup_on_plate',
+      galleryInnerId: 'cup_on_plate',
+      scrollLeftBtnId: 'scrollLeftBtncup_on_plate',
+      scrollRightBtnId: 'scrollRightBtncup_on_plate'
+    },
+    {
+      sectionId: 'gallery-section-open_drawer',
+      galleryInnerId: 'open_drawer',
+      scrollLeftBtnId: 'scrollLeftBtnopen_drawer',
+      scrollRightBtnId: 'scrollRightBtnopen_drawer'
+    },
+    {
+      sectionId: 'gallery-section-hang_mug',
+      galleryInnerId: 'hang_mug',
+      scrollLeftBtnId: 'scrollLeftBtnhang_mug',
+      scrollRightBtnId: 'scrollRightBtnhang_mug'
+    },
+    {
+      sectionId: 'gallery-section-block_insertion',
+      galleryInnerId: 'block_insertion',
+      scrollLeftBtnId: 'scrollLeftBtnblock_insertion',
+      scrollRightBtnId: 'scrollRightBtnblock_insertion'
+    },
+    {
+      sectionId: 'gallery-section-water_plant',
+      galleryInnerId: 'water_plant',
+      scrollLeftBtnId: 'scrollLeftBtnwater_plant',
+      scrollRightBtnId: 'scrollRightBtnwater_plant'
+    },
+    {
+      sectionId: 'gallery-section-open_lid',
+      galleryInnerId: 'open_lid',
+      scrollLeftBtnId: 'scrollLeftBtnopen_lid',
+      scrollRightBtnId: 'scrollRightBtnopen_lid'
     },
     {
       sectionId: 'gallery-section-gait_transition',
