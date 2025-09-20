@@ -89,27 +89,26 @@ The template is structured for research papers but can be adapted for any projec
       <div class="section">
         <div class="task-selector" id="task-buttons">
           <!-- TODO: Not selector, put in one row -->
-          <button type="button" class="task-button active" data-value="open-drawer">open drawer</button>
-          <button type="button" class="task-button" data-value="hang-mug">hang mug</button>
-          <button type="button" class="task-button" data-value="cup-on-saucer">cup on saucer</button>
-          <button type="button" class="task-button" data-value="block-insertion">block insertion</button>
-          <button type="button" class="task-button" data-value="water-plant">water plant</button>
-          <button type="button" class="task-button" data-value="open-lid">open lid</button>
+          <button type="button" class="task-button active" data-value="drawer">open drawer</button>
+          <button type="button" class="task-button" data-value="mug">hang mug</button>
+          <button type="button" class="task-button" data-value="saucer">cup on saucer</button>
+          <button type="button" class="task-button" data-value="block">block insertion</button>
+          <button type="button" class="task-button" data-value="water">water plant</button>
         </div>
         <div class="viewer-container">
-          <iframe id="task-viewer" src="assets/viser-client/?playbackPath=assets/recording.viser&initialCameraPosition=0,0,0&initialCameraLookAt=0.0,0.0,1.0&initialCameraUp=0.0,-1.0,0.0"  style="display: block; width: 100%; height: 500px; border: none;"></iframe>
+          <iframe id="task-viewer" style="display: block; width: 100%; height: 500px; border: none;"></iframe>
           <div class="media-column">
             <div class="media-item">
               <p>Initial Observation</p>
-              <img src="assets/img/start.png" alt="Initial Observation">
+              <img id="initial-observation" alt="Initial Observation">
             </div>
             <div class="media-item">
               <p>Generated Video</p>
-              <video src="assets/img/wan.mp4" autoplay muted playsinline loop></video>
+              <video id="generated-video" autoplay muted playsinline loop></video>
             </div>
             <div class="media-item">
               <p>Execution Video</p>
-              <video src="assets/img/camera0.mp4" autoplay muted playsinline loop></video>
+              <video id="execution-video" autoplay muted playsinline loop></video>
             </div>
           </div>
         </div>
